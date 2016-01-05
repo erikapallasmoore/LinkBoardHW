@@ -1,5 +1,21 @@
 Rails.application.routes.draw do
 
+  # get 'users/new'
+
+  # get 'users/create'
+
+  # get 'sessions/new'
+
+  # get 'sessions/create'
+
+  # get 'sessions/destroy'
+    # You can have the root of your site routed with "root"
+  root 'posts#index'
+
+  resources :posts, only: [:new, :create, :show] do
+    resources :comments, only: [:index, :new, :create]
+  end
+
 # Auth routes
 
   get   "/signup" => "users#new"

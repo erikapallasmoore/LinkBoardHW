@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+
+	has_many :post
+
 	validates :email,
 	presence: true,
 	uniqueness: {case_sensitive: false}
@@ -10,7 +13,7 @@ class User < ActiveRecord::Base
 
 	has_secure_password
 
-	has_many :pet
+	
 
 	def self.authenticate email, password
 		User.find_by_email(email).try(:authenticate, password)
